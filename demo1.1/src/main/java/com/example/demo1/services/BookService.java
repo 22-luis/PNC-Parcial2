@@ -27,7 +27,9 @@ public class BookService {
         book.setPages(bookInfo.getPages());
         book.setLanguage(bookInfo.getLanguage());
         book.setPublicationYear(bookInfo.getPublicationYear());
-        bookRepository.save(book);
+        if (bookInfo.getPublicationYear() < 2025 && bookInfo.getPublicationYear() > 1900 && bookInfo.getPages() > 10) {
+            bookRepository.save(book);
+        }
     }
 
     public void deleteBook(UUID id) {
